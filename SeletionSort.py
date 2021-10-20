@@ -8,16 +8,22 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def Merge(A, m, B, n):
-	i = n - 1
-	j = k = m - 1
-	while k >= 0:
-		if(B[i] > A[j] or j < 0):
-			A[k] = B[i]
-			i -= 1
-			if(i < 0):
-				break
-		else:
-			A[k] = A[j]
-			j -= 1
-		k -= 1
+def SelectionSort(A):
+  for i in range(len(A)):
+    least = i
+    for k in range(i + 1 , len(A)):
+      if A[k] < A[least]:
+        least = k
+ 
+    swap(A, least, i)
+ 
+ 
+def swap(A, x, y):
+  temp = A[x]
+  A[x] = A[y]
+  A[y] = temp
+	      
+      
+A = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+SelectionSort(A)
+print(A) 

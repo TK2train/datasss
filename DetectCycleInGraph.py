@@ -8,16 +8,24 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def Merge(A, m, B, n):
-	i = n - 1
-	j = k = m - 1
-	while k >= 0:
-		if(B[i] > A[j] or j < 0):
-			A[k] = B[i]
-			i -= 1
-			if(i < 0):
-				break
-		else:
-			A[k] = A[j]
-			j -= 1
-		k -= 1
+def DetectCycle(G) :
+	for i in range(0, G.numVertices):
+		Visited[s] = 0
+		Predecessor[i] = 0
+	
+	for i in range(0, G.numVertices):
+		if(not Visited[i] and HasCycle(G, i)):
+			return 1
+	return False
+
+def HasCycle(G, u) :
+	Visited[u] = 1
+	for i in range(0, G.numVertices):
+		if(G.adjMatrix[s][i]) :
+			if(Predecessor[i] != u and Visited[i]):
+				return 1
+			else:
+				Predecessor[i] = u
+				return  HasCycle(G, i)
+	return 0
+

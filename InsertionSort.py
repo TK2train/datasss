@@ -8,16 +8,15 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def Merge(A, m, B, n):
-	i = n - 1
-	j = k = m - 1
-	while k >= 0:
-		if(B[i] > A[j] or j < 0):
-			A[k] = B[i]
-			i -= 1
-			if(i < 0):
-				break
-		else:
-			A[k] = A[j]
-			j -= 1
-		k -= 1
+def Insertionsort(A):
+  for i in range(1, len(A)):
+    tmp = A[i]
+    k = i
+    while k > 0 and tmp < A[k - 1]:
+        A[k] = A[k - 1]
+        k -= 1
+    A[k] = tmp    
+      
+A = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+Insertionsort(A)
+print(A) 

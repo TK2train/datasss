@@ -8,16 +8,23 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def Merge(A, m, B, n):
-	i = n - 1
-	j = k = m - 1
-	while k >= 0:
-		if(B[i] > A[j] or j < 0):
-			A[k] = B[i]
-			i -= 1
-			if(i < 0):
-				break
-		else:
-			A[k] = A[j]
-			j -= 1
-		k -= 1
+def BubbleSort(A):
+	swapped = 1 
+	for i in range(len(A)):
+		if (swapped == 0):
+			return
+		
+		for k in range(len(A) - 1, i, -1):
+			if (A[k] < A[k - 1]):
+				swap(A, k, k - 1)
+				swapped = 1
+
+def swap(A, x, y):
+	temp = A[x]
+	A[x] = A[y]
+	A[y] = temp
+	
+
+A = [127, 220, 246, 277, 321, 454, 534, 565, 933]
+BubbleSort(A)
+print(A) 

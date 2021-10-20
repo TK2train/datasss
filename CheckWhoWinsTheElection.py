@@ -8,16 +8,20 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def Merge(A, m, B, n):
-	i = n - 1
-	j = k = m - 1
-	while k >= 0:
-		if(B[i] > A[j] or j < 0):
-			A[k] = B[i]
-			i -= 1
-			if(i < 0):
-				break
-		else:
-			A[k] = A[j]
-			j -= 1
-		k -= 1
+def CheckWhoWinsTheElection(A):
+	counter = maxCounter = 0
+	candidate = A[0]
+	for i in range(0, len(A)):
+		counter = 1
+		for j in range(i + 1, len(A)):
+			if(A[i] == A[j]): 
+				counter += 1		
+		if(counter > maxCounter):
+			maxCounter = counter
+			candidate = A[i]	
+	print candidate, "appeared ", maxCounter, " times"
+
+A = [3, 2, 1, 2, 2, 3]
+CheckWhoWinsTheElection(A)
+A = [3, 3, 3, 2, 2, 3]
+CheckWhoWinsTheElection(A)
