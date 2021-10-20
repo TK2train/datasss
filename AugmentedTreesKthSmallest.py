@@ -8,16 +8,12 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def DLLtoBalancedBST(head):
-	if(not head or not head.next): 
-		return head
-	temp = FindMiddleNode(head)  # Refer Linked Lists chapter for this function. We can use two-pointer logic to find the middle node
-	p = head
-	while(p.next != temp):
-		p = p.next
-	p.next = None
-	q = temp.next
-	temp.next = None
-	temp.prev = DLLtoBalancedBST(head)
-	temp.next = DLLtoBalancedBST(q)
-	return temp
+def KthSmallest (X, K):
+     r = X.left.size + 1  # Assume size property is added to node
+     if(K == r): 
+          return X	
+     if(K < r): 
+          return KthSmallest (X.left, K)
+     if(K > r): 
+          return KthSmallest (X.right, K - r)
+

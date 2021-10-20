@@ -8,16 +8,19 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def DLLtoBalancedBST(head):
-	if(not head or not head.next): 
-		return head
-	temp = FindMiddleNode(head)  # Refer Linked Lists chapter for this function. We can use two-pointer logic to find the middle node
-	p = head
-	while(p.next != temp):
-		p = p.next
-	p.next = None
-	q = temp.next
-	temp.next = None
-	temp.prev = DLLtoBalancedBST(head)
-	temp.next = DLLtoBalancedBST(q)
-	return temp
+def findDepthInGenericTree(P):
+	maxDepth = -1
+	currentDepth = -1
+	for i in range (0, len(P)):
+		currentDepth = 0
+		j = i
+		while(P[j] != -1):
+		       currentDepth += 1
+		       j = P[j]
+		if(currentDepth > maxDepth):
+			maxDepth = currentDepth
+	
+	return maxDepth
+
+P = [-1, 0, 1, 6, 6, 0, 0, 2, 7]
+print "Depth of given Generic Tree is:", findDepthInGenericTree(P)

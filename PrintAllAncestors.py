@@ -8,16 +8,10 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def DLLtoBalancedBST(head):
-	if(not head or not head.next): 
-		return head
-	temp = FindMiddleNode(head)  # Refer Linked Lists chapter for this function. We can use two-pointer logic to find the middle node
-	p = head
-	while(p.next != temp):
-		p = p.next
-	p.next = None
-	q = temp.next
-	temp.next = None
-	temp.prev = DLLtoBalancedBST(head)
-	temp.next = DLLtoBalancedBST(q)
-	return temp
+def PrintAllAncestors(root, node):
+	if(root == NULL):
+		return 0
+	if(root.left == node or root.right == node or  PrintAllAncestors(root.left, node) or PrintAllAncestors(root.right, node)):
+		print(root.data)
+		return 1
+	return 0

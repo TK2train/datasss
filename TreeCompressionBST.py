@@ -8,16 +8,16 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def DLLtoBalancedBST(head):
-	if(not head or not head.next): 
-		return head
-	temp = FindMiddleNode(head)  # Refer Linked Lists chapter for this function. We can use two-pointer logic to find the middle node
-	p = head
-	while(p.next != temp):
-		p = p.next
-	p.next = None
-	q = temp.next
-	temp.next = None
-	temp.prev = DLLtoBalancedBST(head)
-	temp.next = DLLtoBalancedBST(q)
-	return temp
+import sys
+def TreeCompression(root, previousNodeData):
+	if(not root): 
+		return None
+	TreeCompression(root.left, previousNode)  
+	if(previousNodeData == -sys.maxint):
+		previousNodeData = root.data
+		free(root)
+
+	if(previousNodeData != -sys.maxint):  # Process current node
+		root.data2 = previousNodeData
+	return TreeCompression(root.right, previousNode)
+

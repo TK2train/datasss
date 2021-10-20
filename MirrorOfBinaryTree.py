@@ -8,16 +8,14 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def DLLtoBalancedBST(head):
-	if(not head or not head.next): 
-		return head
-	temp = FindMiddleNode(head)  # Refer Linked Lists chapter for this function. We can use two-pointer logic to find the middle node
-	p = head
-	while(p.next != temp):
-		p = p.next
-	p.next = None
-	q = temp.next
-	temp.next = None
-	temp.prev = DLLtoBalancedBST(head)
-	temp.next = DLLtoBalancedBST(q)
-	return temp
+def MirrorOfBinaryTree(root):
+	if(root != None):
+		MirrorOfBinaryTree(root.left)
+		MirrorOfBinaryTree(root.right)
+
+		# swap the pointers in this node
+		temp = root.left
+		root.left = root.right
+		root.right = temp
+	
+	return root

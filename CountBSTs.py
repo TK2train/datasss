@@ -8,16 +8,19 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def DLLtoBalancedBST(head):
-	if(not head or not head.next): 
-		return head
-	temp = FindMiddleNode(head)  # Refer Linked Lists chapter for this function. We can use two-pointer logic to find the middle node
-	p = head
-	while(p.next != temp):
-		p = p.next
-	p.next = None
-	q = temp.next
-	temp.next = None
-	temp.prev = DLLtoBalancedBST(head)
-	temp.next = DLLtoBalancedBST(q)
-	return temp
+def CountTrees(n) :
+	if (n <= 1):   
+		return 1
+	else :	
+		# there will be one value at the root, with whatever remains on the left and right
+		# each forming their own subtrees. Iterate through all the values that could be the root...
+		sum = 0
+		for root in range(1, n + 1):
+			left = CountTrees(root - 1)
+			right = CountTrees(n - root)
+			# number of possible trees with this root == left*right
+			sum += left * right
+
+		return(sum)
+for i  in range(1, 11):
+	print CountTrees(i)

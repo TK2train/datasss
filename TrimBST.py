@@ -8,16 +8,15 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def DLLtoBalancedBST(head):
-	if(not head or not head.next): 
-		return head
-	temp = FindMiddleNode(head)  # Refer Linked Lists chapter for this function. We can use two-pointer logic to find the middle node
-	p = head
-	while(p.next != temp):
-		p = p.next
-	p.next = None
-	q = temp.next
-	temp.next = None
-	temp.prev = DLLtoBalancedBST(head)
-	temp.next = DLLtoBalancedBST(q)
-	return temp
+def trimBST(root, minVal, maxVal): 
+	if not root: 
+		return 
+	root.setLeft(trimBST(root.getLeft(), minVal, maxVal)) 
+	root.setRight(trimBST(root.getRight(), minVal, maxVal)) 
+	if minVal <= root.get_data() <= maxVal: 
+		return root 
+	if root.get_data() < minVal: 
+		return root.getRight() 
+	if root.get_data() > maxVal: 
+		return root.getLeft()
+		

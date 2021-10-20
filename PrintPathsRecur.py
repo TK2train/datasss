@@ -8,16 +8,21 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def DLLtoBalancedBST(head):
-	if(not head or not head.next): 
-		return head
-	temp = FindMiddleNode(head)  # Refer Linked Lists chapter for this function. We can use two-pointer logic to find the middle node
-	p = head
-	while(p.next != temp):
-		p = p.next
-	p.next = None
-	q = temp.next
-	temp.next = None
-	temp.prev = DLLtoBalancedBST(head)
-	temp.next = DLLtoBalancedBST(q)
-	return temp
+def sumNumbers(self, root):
+	if not root:
+		return 0
+	current = 0
+	sum = [0]
+	self.printPathsRecur(root, current, sum)
+	return sum[0]
+	
+def printPathsRecur(self, root, current, sum):
+	if not root:
+		return
+	current = current * 10 + root.data
+	if not root.left and not root.right:
+		sum[0] += current
+		return
+
+	self.printPathsRecur(root.left, current, sum)
+	self.printPathsRecur(root.right, current, sum)
