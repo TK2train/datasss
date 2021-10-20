@@ -21,7 +21,7 @@ def exchangeEvenOddList(head):
 	else:
 		while(itr != None):
 			if(itr.data % 2 == 0):
-				if(evenList == None):
+				if(evenList == NULL):
 					# first even node 
 					evenList = evenListEnd = itr
 				else:
@@ -29,7 +29,7 @@ def exchangeEvenOddList(head):
 					evenListEnd.next = itr                           
 					evenListEnd = itr
 			else:
-				if(oddList == None):
+				if(oddList == NULL):
 					# first odd node 
 					oddList = oddListEnd = itr
 				else:
