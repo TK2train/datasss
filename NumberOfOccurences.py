@@ -8,26 +8,12 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def matrix_find(matrix, value):
-    m = len(matrix)
-    if m == 0:
-        return 0
+def linear_search_count(A, data):
+	count = 0
+	for i in range (0, len(A)): 
+		if(A[i] == data):
+			count += 1
+	return count
 
-    n = len(matrix[0])
-    if n == 0:
-        return 0
-
-    i = 0
-    j = n - 1
-
-    while i < m and j >= 0:
-        if matrix[i][j] == value:
-            return 1
-
-        elif matrix[i][j] < value:
-            i = i + 1
-
-        else:
-            j = j - 1
-
-    return 0
+A = [7, 3, 6, 3, 3, 6, 7	]
+print linear_search_count(A, 7)

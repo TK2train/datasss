@@ -8,26 +8,17 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def matrix_find(matrix, value):
-    m = len(matrix)
-    if m == 0:
-        return 0
+def reverse_number(n):
+	nReverse = n
+	s = n.bit_length()
+	while(n):
+		nReverse <<= 1
+		nReverse |= (n & 1)
+		s -= 1
+		n >>= 1
+	nReverse <<= s	
+	print nReverse
 
-    n = len(matrix[0])
-    if n == 0:
-        return 0
-
-    i = 0
-    j = n - 1
-
-    while i < m and j >= 0:
-        if matrix[i][j] == value:
-            return 1
-
-        elif matrix[i][j] < value:
-            i = i + 1
-
-        else:
-            j = j - 1
-
-    return 0
+n = 4
+print n
+reverse_number(n)

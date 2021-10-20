@@ -8,26 +8,14 @@
 # 				   warranty; without even the implied warranty of 
 # 				    merchantability or fitness for a particular purpose. 
 
-def matrix_find(matrix, value):
-    m = len(matrix)
-    if m == 0:
-        return 0
+def number_of_trailing_zeros_of_factorial_number(n):
+	count = 0
+	if(n < 0):  
+		return -1
+	i = 5
+	while n / i > 0:
+		count += n / i
+		i *= 5
+	return count
 
-    n = len(matrix[0])
-    if n == 0:
-        return 0
-
-    i = 0
-    j = n - 1
-
-    while i < m and j >= 0:
-        if matrix[i][j] == value:
-            return 1
-
-        elif matrix[i][j] < value:
-            i = i + 1
-
-        else:
-            j = j - 1
-
-    return 0
+print number_of_trailing_zeros_of_factorial_number(100)
